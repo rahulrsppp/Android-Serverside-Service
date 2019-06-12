@@ -7,6 +7,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -42,28 +43,26 @@ public class MyRemoteServerSideService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        System.out.println(":::: Bind");
+        Toast.makeText(getApplicationContext(),"Service Bind", Toast.LENGTH_SHORT).show();
         return myMessenger.getBinder();
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        System.out.println(":::: UnBind");
+        Toast.makeText(getApplicationContext(),"Service UnBind", Toast.LENGTH_SHORT).show();
         return super.onUnbind(intent);
     }
 
     @Override
     public void onRebind(Intent intent) {
-        System.out.println(":::: ReBind");
+        Toast.makeText(getApplicationContext(),"Service ReBind", Toast.LENGTH_SHORT).show();
 
         super.onRebind(intent);
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        System.out.println(":::: Service Start");
-
-
+        Toast.makeText(getApplicationContext(),"Service Start", Toast.LENGTH_SHORT).show();
 
 
         new Thread(new Runnable() {
